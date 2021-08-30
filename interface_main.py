@@ -1,4 +1,4 @@
-from headers import *
+from interface_headers import *
 
 def main():
     print("Hello World")
