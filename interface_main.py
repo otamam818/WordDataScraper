@@ -1,11 +1,13 @@
 from interface_headers import *
 
+# ---| Main function |--------------------------------------------------------
 def main():
     FEATURE_ACTIONS = {"1": choose_input}
     print(SEPARATOR)
     choice = ask()
     FEATURE_ACTIONS[choice]()
 
+# ---| Helper functions |-----------------------------------------------------
 def ask():
     print(SEPARATOR + "\nWhat do you want to do:")
     print(FEATURE_CHOICES)
@@ -28,6 +30,7 @@ def choose_input():
     choice = input(ASK_NUMBER)
     TEXT_INPUT_ACTIONS[choice]()
     
+# ---| Functions related to various text inputs |-----------------------------
 def get_text():
     text = ""
     print(SEPARATOR)
@@ -54,6 +57,7 @@ def use_pasted():
     print("Copied!")
     choose_tpm(text)
 
+# ---| Text-processing choice interface |-------------------------------------
 def choose_tpm(text):
     """Choose text processing method"""
     print(SEPARATOR)
