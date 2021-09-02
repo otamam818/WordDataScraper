@@ -1,4 +1,7 @@
+# ---| Module imports |-------------------------------------------------------
 import program_main
+
+# ---| Specific imports |-----------------------------------------------------
 from typing import Final
 from pyperclip import paste
 from PySide6.QtWidgets import QApplication, QFileDialog

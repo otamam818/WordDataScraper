@@ -42,11 +42,11 @@ def get_text():
         choose_tpm(text)
 
 def get_file(): 
-    app = QApplication([])
+    QApplication([])
     filePath = QFileDialog().getOpenFileName(None, 
         "Choose File:", "", "*.txt")[0]
     with open(filePath, 'r') as myFile:
-        text = myFile.readlines()
+        text = myFile.read()
     choose_tpm(text)
 
 def use_pasted(): 
