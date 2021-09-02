@@ -2,6 +2,7 @@ from interface_headers import *
 
 # ---| Main function |--------------------------------------------------------
 def main():
+    """Where everything starts and ends"""
     FEATURE_ACTIONS = {"1": choose_input}
     print(SEPARATOR)
     choice = ask()
@@ -9,6 +10,7 @@ def main():
 
 # ---| Helper functions |-----------------------------------------------------
 def ask():
+    """Ask the user what they want to do"""
     print(SEPARATOR + "\nWhat do you want to do:")
     print(FEATURE_CHOICES)
     try:
@@ -20,6 +22,10 @@ def ask():
     return choice
 
 def choose_input():
+    """
+        Asks the user how should they insert 
+        the text they are interested in
+    """
     TEXT_INPUT_ACTIONS = {
         "1" : get_file,
         "2" : use_pasted,
@@ -32,6 +38,10 @@ def choose_input():
     
 # ---| Functions related to various text inputs |-----------------------------
 def get_text():
+    """
+        If the user wishes to manually paste the input, 
+        they can use this function
+    """
     text = ""
     print(SEPARATOR)
     print("Paste your text here. Once you are done, press CTRL+C")
@@ -42,6 +52,7 @@ def get_text():
         choose_tpm(text)
 
 def get_file(): 
+    """Prompts an open file dialog to receive a text file"""
     QApplication([])
     filePath = QFileDialog().getOpenFileName(None, 
         "Choose File:", "", "*.txt")[0]
@@ -50,6 +61,7 @@ def get_file():
     choose_tpm(text)
 
 def use_pasted(): 
+    """Pastes the text currently in the user's clipboard"""
     print(SEPARATOR)
     input("Has your input been copied to clipboard?\nPress ENTER if it has")
     print("copying...")
