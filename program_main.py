@@ -56,9 +56,37 @@ def make_table(text, punctuation=False, to_return=False):
             EXCEL_FILETYPE : data.to_excel
         }[file_type](file_name)
 
-def make_bar_graph(text): pass
+def make_bar_graph(text, num_items=10, file_name="data_bar_graph") -> None: 
+    """Makes a bar graph of the frequencies of the given text"""
+    
+    # Get the data of repeats
+    data = make_table(text, to_return=True).head(num_items)
+    freq_dict = dict(data["Frequency"])
+
+    # Set up the bar graph
+    plt.style.use("seaborn")
+    plt.figure(figsize=(25, 10))
+
+    # Make it with different colors
+    all_bars = plt.bar(range(num_items),freq_dict.values())
+    for bar in all_bars:
+        bar.set_color(choice(COLORS))
+
+    # Add labels
+    plt.title("Number of words in article", weight='bold', size='xx-large')
+    plt.xlabel("Words", weight='bold')
+    plt.ylabel("Number\nof\nrepeats", rotation=0, labelpad=50, weight='bold')
+    plt.xticks(range(num_items), freq_dict.keys())
+
+    # Save the figure
+    plt.savefig(file_name+'.png', format='png')
+
 
 def make_pie_chart(text): pass
+
+def TEST_text():
+    with open("my_text.txt", 'r') as my_file:
+        return my_file.read()
 
 if __name__=="__main__":
     main()
